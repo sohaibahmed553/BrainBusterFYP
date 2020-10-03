@@ -1,0 +1,211 @@
+[
+    {
+        "Questions": "Once the lower-level lock is released, the operation cannot be undone by using the old values of updated data items, and must instead be undone by executing a compensating operation; such an operation is called",
+        "A": "Logical operation",
+        "B": "Redo operation",
+        "C": "Logical undo operation",
+        "D": "Undo operation",
+        "Answer": "A",
+        "Explanation": " It is important that the lower-level locks acquired during an operation are sufficient to perform a subsequent logical undo of the operation.",
+        "Difficulty": "M",
+        "StID": "22"
+    },
+    {
+        "Questions": "Which of the following is used for undo operations alone?",
+        "A": "Logical logging",
+        "B": "Physical logging",
+        "C": "Physical log records",
+        "D": "Physical logging and Physical log records",
+        "Answer": "A",
+        "Explanation": "If the operation inserted an entry in a B+-tree, the undo information U would indicate that a deletion operation is to be performed, and would identify the B+-tree and what entry to delete from the tree. Such logging of information about operations is called logical logging.",
+        "Difficulty": "H",
+        "StID": "22"
+    },
+    {
+        "Questions": " Redo operations are performed exclusively using",
+        "A": "Logical logging",
+        "B": "Physical logging",
+        "C": "Physical log records",
+        "D": "Both Physical logging and Physical log records",
+        "Answer": "D",
+        "Explanation": "Logging of old-value and new-value information is called physical logging.",
+        "Difficulty": "E",
+        "StID": "22"
+    },
+    {
+        "Questions": "To perform logical redo or undo, the database state on disk must be operation ___________ that is, it should not have partial effects of any operation.",
+        "A": "Persistent",
+        "B": " Resistant",
+        "C": "Consistent",
+        "D": "None of the mentioned",
+        "Answer": "C",
+        "Explanation": "Data structures such as B+-trees would not be in a consistent state, and neither logical redo nor logical undo operations can be performed on an inconsistent data structure.",
+        "Difficulty": "M",
+        "StID": "22"
+    },
+    {
+        "Questions": "An operation is said to be __________ if executing it several times in a row gives the same result as executing it once.",
+        "A": " Idempotent",
+        "B": "Changed",
+        "C": "Repetitive",
+        "D": " All of the above",
+        "Answer": "A",
+        "Explanation": " Operations such as inserting an entry into a B+-tree may not be idempotent, and the recovery algorithm must therefore make sure that an operation that has already been performed is not performed again.",
+        "Difficulty": "H",
+        "StID": "22"
+    },
+    {
+        "Questions": "Immediate database modification technique uses",
+        "A": "Both undo and redo",
+        "B": "Undo but no redo",
+        "C": "Redo but no undo",
+        "D": "Neither undo nor redo",
+        "Answer": "A",
+        "Explanation": " Undo erases all the changes and redo makes the deleted changes.",
+        "Difficulty": "E",
+        "StID": "22"
+    },
+    {
+        "Questions": " Shadow paging has",
+        "A": " no redo",
+        "B": "no undo",
+        "C": "redo but no undo",
+        "D": "neither redo nor undo",
+        "Answer": "A",
+        "Explanation": "Undo erases all the changes and redo makes the deleted changes.",
+        "Difficulty": "M",
+        "StID": "22"
+    },
+    {
+        "Questions": "For correct behaviour during recovery, undo and redo operation must be",
+        "A": "Commutative",
+        "B": "Associative",
+        "C": "Idempotent",
+        "D": "Distributive",
+        "Answer": "C",
+        "Explanation": "Undo erases all the changes and redo makes the deleted changes.",
+        "Difficulty": "H",
+        "StID": "22"
+    },
+    {
+        "Questions": "If ___________ are not obtained in undo operation it will cause problem in undo-phase.",
+        "A": "Higher-level lock",
+        "B": "Lower-level lock",
+        "C": "Read only lock",
+        "D": "Read write",
+        "Answer": "B",
+        "Explanation": "Operations acquire lower-level locks while they execute, but release them when they complete; the corresponding transaction must however retain a higher-level lock in a two-phase manner to prevent concurrent transactions from executing conflicting actions.",
+        "Difficulty": "E",
+        "StID": "22"
+    },
+    {
+        "Questions": "The remote backup site is sometimes also called the",
+        "A": "Primary Site",
+        "B": "Secondary Site",
+        "C": "Tertiary Site",
+        "D": "None of the mentioned",
+        "Answer": "B",
+        "Explanation": "We can achieve high availability by performing transaction processing at one site, called the primary site, and having a remote backup site where all the data from the primary site are replicated.",
+        "Difficulty": "M",
+        "StID": "22"
+    },
+    {
+        "Questions": "Remote backup system must be _________ with the primary site.",
+        "A": "Synchronised",
+        "B": "Separated",
+        "C": "Connected",
+        "D": "Detached but related",
+        "Answer": "A",
+        "Explanation": "We can achieve high availability by performing transaction processing at one site, called the primary site, and having a remote backup site where all the data from the primary site are replicated.",
+        "Difficulty": "H",
+        "StID": "22"
+    },
+    {
+        "Questions": "The backup is taken by",
+        "A": "Erasing all previous records",
+        "B": "Entering the new records",
+        "C": " Sending all log records from primary site to the remote backup site",
+        "D": "Sending selected records from primary site to the remote backup site",
+        "Answer": "C",
+        "Explanation": "We can achieve high availability by performing transaction processing at one site, called the primary site, and having a remote backup site where all the data from the primary site are replicated.",
+        "Difficulty": "E",
+        "StID": "22"
+    },
+    {
+        "Questions": " When the __________ the backup site takes over processing and becomes the primary.",
+        "A": "Secondary fails",
+        "B": "Backup recovers",
+        "C": "Primary fails",
+        "D": "None of the mentioned",
+        "Answer": "C",
+        "Explanation": "When the original primary site recovers, it can either play the role of remote backup, or take over the role of primary site again.",
+        "Difficulty": "M",
+        "StID": "22"
+    },
+    {
+        "Questions": "The simplest way of transferring control is for the old primary to receive __________ from the old backup site.",
+        "A": "Undo logs",
+        "B": "Redo Logs",
+        "C": "Primary Logs",
+        "D": " All of the mentioned",
+        "Answer": "C",
+        "Explanation": "If control must be transferred back, the old backup site can pretend to have failed, resulting in the old primary taking over.",
+        "Difficulty": "H",
+        "StID": "22"
+    },
+    {
+        "Questions": "The time to process the remote backup can be reduced by",
+        "A": "Flags",
+        "B": "Breakpoints",
+        "C": "Redo points",
+        "D": "Checkpoints",
+        "Answer": "D",
+        "Explanation": " If the log at the remote backup grows large, recovery will take a long time. The remote backup site can periodically process the redo log records that it has received and can perform a checkpoint, so that earlier parts of the log can be deleted.",
+        "Difficulty": "E",
+        "StID": "22"
+    },
+    {
+        "Questions": " A _______________ configuration can make takeover by the backup site almost instantaneous.",
+        "A": " Hot-spare",
+        "B": "Remote",
+        "C": "Direct",
+        "D": "Spare",
+        "Answer": "D",
+        "Explanation": "In this configuration, the remote backup site continually processes redo log records as they arrive, applying the updates locally.",
+        "Difficulty": "M",
+        "StID": "22"
+    },
+    {
+        "Questions": "A transaction commits as soon as its commit log record is written to stable storage at the primary site. This is",
+        "A": "One Safe",
+        "B": "Two Safe",
+        "C": "Two-very Safe",
+        "D": "Very Safe",
+        "Answer": "A",
+        "Explanation": "The problem with this scheme is that the updates of a committed transaction may not have made it to the backup site, when the backup site takes over processing.",
+        "Difficulty": "H",
+        "StID": "22"
+    },
+    {
+        "Questions": "A transaction commits as soon as its commit log record is written to stable storage at the primary and the backup site. This is\r\n",
+        "A": "One Safe",
+        "B": "Two Safe",
+        "C": "Two-very Safe",
+        "D": "Very Safe",
+        "Answer": "C",
+        "Explanation": "The problem with this scheme is that transaction processing cannot proceed if either the primary or the backup site is down.",
+        "Difficulty": "E",
+        "StID": "22"
+    },
+    {
+        "Questions": "If only the primary is active, the transaction is allowed to commit as soon as its commit log record is written to stable storage at the primary site. This is",
+        "A": "One Safe",
+        "B": " Two Safe",
+        "C": "Two-very Safe",
+        "D": "Very Safe",
+        "Answer": "B",
+        "Explanation": "This scheme provides better availability than does two-very-safe, while avoiding the problem of lost transactions faced by the one-safe scheme.",
+        "Difficulty": "M",
+        "StID": "22"
+    }
+]

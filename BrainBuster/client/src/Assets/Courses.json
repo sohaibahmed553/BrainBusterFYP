@@ -1,0 +1,43 @@
+{
+	"UserName": "",
+	"NickName": "",
+	"Courses": [
+		{
+			"CourseName": "OOP",
+			"CourseDescription": "ghg guygyu yugyug",
+			"CourseInstructor": "",
+			"Stages": ["", "", "", "", "", ""]
+		}
+	],
+	"AssignedCourses": [
+		{
+			"CourseName": "OOP",
+			"Badges": "",
+			"Leaderboard": [
+				{
+					"StID": "",
+					"NickName": "",
+					"totalScore": ""
+				}
+			],
+			"Stages": [
+				{
+					"StTitle": "",
+					"Locked": true,
+					"Score": 0,
+					"Questions": [
+						{
+							"Question": "",
+							"A": "",
+							"B": "",
+							"C": "",
+							"D": "",
+							"Answer": "",
+							"Explanation": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,39 @@
+.courseTitle {
+	background-color: white;
+	height: 80px;
+	padding: 10px 20px 10px 20px;
+	margin-bottom: 2px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.course {
+	background-color: white;
+	height: 100%;
+	padding: 10px;
+	margin-bottom: 2px;
+}
+
+.courseAvatar {
+	width: 10%;
+	height: 42px;
+	float: left;
+}
+
+.courseDetails {
+	width: 90%;
+}
+
+.courseName {
+	font-weight: bold;
+	font-size: 17px;
+	line-height: 0px;
+}
+
+.noData {
+	height: 180px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

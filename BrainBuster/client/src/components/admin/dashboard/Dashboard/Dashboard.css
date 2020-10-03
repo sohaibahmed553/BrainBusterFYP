@@ -1,0 +1,9 @@
+.statsDiv {
+	border: 2px solid black;
+	text-align: center;
+	padding: 10px;
+}
+
+.statsDiv h6 {
+	color: #1890ff;
+}
