@@ -2,6 +2,10 @@ CREATE DATABASE brainbuster;
 
 use brainbuster;
 
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'sohaib123';
+
+flush privileges;
+
 CREATE TABLE Students (
     StdID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Gender VARCHAR(1) NOT NULL,
@@ -39,6 +43,19 @@ CREATE TABLE Instructors (
 );
 ALTER TABLE Instructors AUTO_INCREMENT=1;
 
+CREATE TABLE Courses (
+    CourseID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    CourseName TEXT NOT NULL,
+	Code VARCHAR(7) NOT NULL UNIQUE,
+    Status INT NOT NULL DEFAULT 0,
+    CourseDescription TEXT NOT NULL,
+    CAvatar TEXT NOT NULL,
+    InstructorID INT NOT NULL,
+    
+    FOREIGN KEY (InstructorID) REFERENCES Instructors(InstructorID)
+);
+ALTER TABLE Courses AUTO_INCREMENT=1;
+
 #more than one students can be assigned more than one courses
 create table AssignedCourses(
     CourseID INT NOT NULL,
@@ -60,18 +77,7 @@ CREATE TABLE Badges(
 ALTER TABLE Badges AUTO_INCREMENT=1;
 
 
-CREATE TABLE Courses (
-    CourseID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    CourseName TEXT NOT NULL,
-	Code VARCHAR(7) NOT NULL UNIQUE,
-    Status INT NOT NULL DEFAULT 0,
-    CourseDescription TEXT NOT NULL,
-    CAvatar TEXT NOT NULL,
-    InstructorID INT NOT NULL,
-    
-    FOREIGN KEY (InstructorID) REFERENCES Instructors(InstructorID)
-);
-ALTER TABLE Courses AUTO_INCREMENT=1;
+
 
 
 #Skip these alter commands
@@ -196,7 +202,7 @@ alter table studentbadges modify CourseID INT not null;
 alter table studentbadges add Primary Key(StdId, CourseID, BID);
 
 CREATE TABLE COMMENTS(
-CommentID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	CommentID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     CourseID INT NOT NULL,
 	NickName VARCHAR(30) NOT NULL,
     Likes INT NOT NULL DEFAULT 0,
