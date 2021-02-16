@@ -25,13 +25,6 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, "client/build")));
-// Anything that doesn't match the above, send back index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
-
 //Public Folder
 app.use("/public", express.static("./public"));
 
@@ -52,6 +45,13 @@ app.use("/api/badges", badgesRouter);
 app.use("/api/links", linksRouter);
 app.use("/api/uploads", uploadsRouter);
 app.use("/api/comments", commentsRouter);
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, "client/build")));
+// Anything that doesn't match the above, send back index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 app.listen(4000, () => {
   console.log("Server started on port 4000...");
