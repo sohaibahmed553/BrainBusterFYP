@@ -2,11 +2,11 @@
   "name": "brain-buster",
   "version": "1.0.0",
   "description": "Quiz application",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "client-install": "npm install --prefix client",
-    "start": "node server",
-    "server": "nodemon server",
+    "start": "node app",
+    "server": "nodemon app",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "cd client && npm install && npm run build"
