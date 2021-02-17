@@ -1,7 +1,7 @@
 {
-  "name": "brain-buster",
+  "name": "brainbusterapi",
   "version": "1.0.0",
-  "description": "Quiz application",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -15,7 +15,18 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^5.3.0",
-    "express": "^4.17.1"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.2.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.3.1",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.9",
+    "multer": "^1.4.2",
+    "mysql": "^2.17.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
