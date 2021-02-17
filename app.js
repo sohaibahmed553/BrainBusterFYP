@@ -59,3 +59,5 @@ app.get("*", (req, res) => {
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
+
+// const conn = require("./config/db");
