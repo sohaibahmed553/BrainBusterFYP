@@ -31,23 +31,23 @@ app.get("/api", (req, res) => res.send("Api Running"));
 //Public Folder
 app.use("/public", express.static("./public"));
 
-app.use("/api/students", studentRouter);
-app.use("/api/instructors", instructorRouter);
-app.use("/api/instructorcourses", instructorCoursesRouter);
-app.use("/api/admins", adminRouter);
-app.use("/api/questions", questionsRouter);
-app.use("/api/challenges", challengesRouter);
-app.use("/api/scores", scoresRouter);
-app.use("/api/stages", stagesRouter);
-app.use("/api/courses", coursesRouter);
-app.use("/api/assignedcourses", assignedCoursesRouter);
-app.use("/api/auth", authRouter);
-app.use("/api/adminauth", adminAuthRouter);
-app.use("/api/instructorauth", instructorAuthRouter);
-app.use("/api/badges", badgesRouter);
-app.use("/api/links", linksRouter);
-app.use("/api/uploads", uploadsRouter);
-app.use("/api/comments", commentsRouter);
+// app.use("/api/students", studentRouter);
+// app.use("/api/instructors", instructorRouter);
+// app.use("/api/instructorcourses", instructorCoursesRouter);
+// app.use("/api/admins", adminRouter);
+// app.use("/api/questions", questionsRouter);
+// app.use("/api/challenges", challengesRouter);
+// app.use("/api/scores", scoresRouter);
+// app.use("/api/stages", stagesRouter);
+// app.use("/api/courses", coursesRouter);
+// app.use("/api/assignedcourses", assignedCoursesRouter);
+// app.use("/api/auth", authRouter);
+// app.use("/api/adminauth", adminAuthRouter);
+// app.use("/api/instructorauth", instructorAuthRouter);
+// app.use("/api/badges", badgesRouter);
+// app.use("/api/links", linksRouter);
+// app.use("/api/uploads", uploadsRouter);
+// app.use("/api/comments", commentsRouter);
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, "client/build")));
