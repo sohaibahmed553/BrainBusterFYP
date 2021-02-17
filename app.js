@@ -3,23 +3,23 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 
-var instructorRouter = require("./routes/instructor");
-var instructorCoursesRouter = require("./routes/instructorcourses");
-var adminRouter = require("./routes/admin");
-var studentRouter = require("./routes/students");
-var questionsRouter = require("./routes/questions");
-var challengesRouter = require("./routes/challenges");
-var scoresRouter = require("./routes/score");
-var stagesRouter = require("./routes/stages");
-var badgesRouter = require("./routes/badges");
-var linksRouter = require("./routes/links");
-var coursesRouter = require("./routes/courses");
-var assignedCoursesRouter = require("./routes/assignedCourses");
-var authRouter = require("./routes/auth");
-var adminAuthRouter = require("./routes/adminauth");
-var instructorAuthRouter = require("./routes/instructorauth");
-var uploadsRouter = require("./routes/uploads");
-var commentsRouter = require("./routes/comments");
+// var instructorRouter = require("./routes/instructor");
+// var instructorCoursesRouter = require("./routes/instructorcourses");
+// var adminRouter = require("./routes/admin");
+// var studentRouter = require("./routes/students");
+// var questionsRouter = require("./routes/questions");
+// var challengesRouter = require("./routes/challenges");
+// var scoresRouter = require("./routes/score");
+// var stagesRouter = require("./routes/stages");
+// var badgesRouter = require("./routes/badges");
+// var linksRouter = require("./routes/links");
+// var coursesRouter = require("./routes/courses");
+// var assignedCoursesRouter = require("./routes/assignedCourses");
+// var authRouter = require("./routes/auth");
+// var adminAuthRouter = require("./routes/adminauth");
+// var instructorAuthRouter = require("./routes/instructorauth");
+// var uploadsRouter = require("./routes/uploads");
+// var commentsRouter = require("./routes/comments");
 
 var app = express();
 app.use(express.json());
@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.get("/api", (req, res) => res.send("Api Running"));
 
 //Public Folder
-app.use("/public", express.static("./public"));
+// app.use("/public", express.static("./public"));
 
 // app.use("/api/students", studentRouter);
 // app.use("/api/instructors", instructorRouter);
