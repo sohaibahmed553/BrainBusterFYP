@@ -28,8 +28,8 @@ app.use(bodyParser.json());
 
 app.get("/api", (req, res) => res.send("Api Running"));
 
-//Public Folder
-// app.use("/public", express.static("./public"));
+// Public Folder
+app.use("/public", express.static("./public"));
 
 // app.use("/api/students", studentRouter);
 // app.use("/api/instructors", instructorRouter);
