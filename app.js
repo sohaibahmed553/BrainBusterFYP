@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 
-var instructorRouter = require("./routes/instructor");
+// var instructorRouter = require("./routes/instructor");
 // var instructorCoursesRouter = require("./routes/instructorcourses");
 // var adminRouter = require("./routes/admin");
 // var studentRouter = require("./routes/students");
@@ -60,4 +60,4 @@ const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
 
-// const conn = require("./config/db");
+const conn = require("./config/db");
