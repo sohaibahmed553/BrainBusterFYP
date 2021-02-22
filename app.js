@@ -2,6 +2,7 @@ var express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
+require("dotenv").config();
 
 var instructorRouter = require("./routes/instructor");
 var instructorCoursesRouter = require("./routes/instructorcourses");

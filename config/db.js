@@ -10,7 +10,6 @@ var conn = mysql.createConnection({
 });
 
 conn.connect((err) => {
-  console.log(process.env.MYSQL_HOST);
   if (err) throw err;
   console.log("Mysql Connected...");
 });
