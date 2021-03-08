@@ -88,7 +88,7 @@ router.post(
             const salt = await bcrypt.genSalt(10);
             data.Pass = await bcrypt.hash(data.Pass, salt);
 
-            let sql = "INSERT INTO admins SET ?";
+            let sql = "INSERT INTO Admins SET ?";
             conn.query(sql, data, async (err, results) => {
               if (err) throw err;
               res.send(results);
