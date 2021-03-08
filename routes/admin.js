@@ -14,7 +14,7 @@ router.get("/dashboard/data", async (req, res) => {
     "SELECT CourseName, Code, Status, UserName FROM Courses,Instructors where Courses.InstructorID = Instructors.InstructorID;";
   let sql2 = "Select UserName, NickName, Email, Gender from Instructors;";
   let sql3 = "Select UserName, NickName, Email, Gender from Admins;";
-  let sql4 = "select count(AdminID) as adminCount from admins;";
+  let sql4 = "select count(AdminID) as adminCount from Admins;";
   let sql5 = "select count(InstructorID) as instructorCount from Instructors;";
   let sql6 = "select count(StdID) as studentCount from Students";
   let query = conn.query(
@@ -75,7 +75,7 @@ router.post(
     try {
       //check if user exists
       conn.query(
-        "SELECT * FROM `admins` WHERE `Email` = ? or `UserName` = ?",
+        "SELECT * FROM `Admins` WHERE `Email` = ? or `UserName` = ?",
         [data.Email, data.UserName],
         async (err, results) => {
           console.log(err, results);
@@ -107,7 +107,7 @@ router.post(
 //@desc Get admin by passing id
 //@access Public
 router.get("/:id", async (req, res) => {
-  let sql = "SELECT * FROM admins WHERE AdminID = ?";
+  let sql = "SELECT * FROM Admins WHERE AdminID = ?";
   let query = conn.query(sql, [req.params.id], (err, results) => {
     res.send(results);
   });
