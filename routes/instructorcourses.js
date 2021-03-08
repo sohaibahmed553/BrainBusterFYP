@@ -7,7 +7,7 @@ const conn = require("../config/db");
 const { check, validationResult } = require("express-validator");
 
 router.get("/", async (req, res) => {
-  let sql = "SELECT * FROM instructorcourses";
+  let sql = "SELECT * FROM InstructorCourses";
   let query = await conn.query(sql, (err, results) => {
     res.send(results);
   });
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 //@desc get all courses for an instructor
 //@access Public
 router.get("/:id", async (req, res) => {
-  let sql = "SELECT * FROM instructorcourses WHERE InstructorID = ?";
+  let sql = "SELECT * FROM InstructorCourses WHERE InstructorID = ?";
   let query = conn.query(sql, [req.params.id], (err, results) => {
     res.send(results);
   });
@@ -44,7 +44,7 @@ router.post(
     };
 
     try {
-      let sql = "Insert into instructorcourses set ?";
+      let sql = "Insert into InstructorCourses set ?";
       let query = await conn.query(sql, data, (err, results) => {
         if (err) throw err;
         res.send(results);

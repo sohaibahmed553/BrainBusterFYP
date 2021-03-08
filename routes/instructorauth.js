@@ -11,7 +11,7 @@ const conn = require("../config/db");
 router.get("/", instructorauth, async (req, res) => {
   try {
     conn.query(
-      "SELECT InstructorID,Gender,Email,UserName,NickName,RegDate FROM `instructors` WHERE `InstructorID` = ?",
+      "SELECT InstructorID,Gender,Email,UserName,NickName,RegDate FROM `Instructors` WHERE `InstructorID` = ?",
       [req.instructor.InstructorID],
       async (err, results) => {
         res.json(results);
@@ -44,7 +44,7 @@ router.post(
     try {
       //check if user exists
       conn.query(
-        "SELECT * FROM `instructors` WHERE `UserName` = ?",
+        "SELECT * FROM `Instructors` WHERE `UserName` = ?",
         [UserName],
         async (err, results) => {
           if (!results.length) {
@@ -122,7 +122,7 @@ router.put(
       const salt = await bcrypt.genSalt(10);
       data.Pass = await bcrypt.hash(data.Pass, salt);
 
-      let sql = "UPDATE instructors set ? WHERE InstructorID = ?";
+      let sql = "UPDATE Instructors set ? WHERE InstructorID = ?";
       let query = await conn.query(
         sql,
         [data, req.params.instructorid],

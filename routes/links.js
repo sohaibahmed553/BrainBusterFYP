@@ -7,7 +7,7 @@ const { check, validationResult } = require("express-validator");
 //@desc get all links
 //@access Public
 router.get("/", async (req, res, next) => {
-  let sql = "SELECT * FROM links";
+  let sql = "SELECT * FROM Links";
   let query = await conn.query(sql, (err, results) => {
     res.send(results);
   });
@@ -18,7 +18,7 @@ router.get("/", async (req, res, next) => {
 //@access Public
 router.get("/:stid", async (req, res) => {
   conn.query(
-    "SELECT * FROM `links` WHERE `StID` = ? ",
+    "SELECT * FROM `Links` WHERE `StID` = ? ",
     [req.params.stid],
     (err, results) => {
       res.send(results);
@@ -32,12 +32,8 @@ router.get("/:stid", async (req, res) => {
 router.post(
   "/",
   [
-    check("link", "Please enter link.")
-      .not()
-      .isEmpty(),
-    check("stage", "Please select stage.")
-      .not()
-      .isEmpty()
+    check("link", "Please enter link.").not().isEmpty(),
+    check("stage", "Please select stage.").not().isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -47,11 +43,11 @@ router.post(
 
     let data = {
       Link: req.body.link,
-      StID: req.body.stage
+      StID: req.body.stage,
     };
 
     try {
-      let sql = "Insert into links set ?";
+      let sql = "Insert into Links set ?";
       let query = await conn.query(sql, data, (err, results) => {
         if (err) throw err;
         res.send(results);
@@ -69,12 +65,8 @@ router.post(
 router.put(
   "/:id",
   [
-    check("link", "Please enter link.")
-      .not()
-      .isEmpty(),
-    check("stage", "Please select stage.")
-      .not()
-      .isEmpty()
+    check("link", "Please enter link.").not().isEmpty(),
+    check("stage", "Please select stage.").not().isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -84,11 +76,11 @@ router.put(
 
     let data = {
       Link: req.body.link,
-      StID: req.body.stage
+      StID: req.body.stage,
     };
 
     try {
-      let sql = "UPDATE links set ? WHERE LinkID = ?";
+      let sql = "UPDATE Links set ? WHERE LinkID = ?";
       let query = await conn.query(
         sql,
         [data, req.params.id],
@@ -110,7 +102,7 @@ router.put(
 
 router.delete("/:id", async (req, res) => {
   conn.query(
-    "Delete FROM `links` WHERE LinkID = ?",
+    "Delete FROM `Links` WHERE LinkID = ?",
     req.params.id,
     (err, results) => {
       res.send(results);

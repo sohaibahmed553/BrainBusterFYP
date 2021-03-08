@@ -7,7 +7,7 @@ const { check, validationResult } = require("express-validator");
 const conn = require("../config/db");
 
 router.get("/", async (req, res, next) => {
-  let sql = "SELECT * FROM challenges";
+  let sql = "SELECT * FROM Challenges";
   let query = await conn.query(sql, (err, results) => {
     res.send(results);
   });
@@ -29,7 +29,7 @@ router.get("/:stid", async (req, res, next) => {
 //@access Public
 router.get("/show/:stid", async (req, res, next) => {
   conn.query(
-    "SELECT * FROM `challenges` WHERE `StID` = ?",
+    "SELECT * FROM `Challenges` WHERE `StID` = ?",
     [req.params.stid],
     (err, results) => {
       res.send(results);
@@ -71,7 +71,7 @@ router.post(
     };
 
     try {
-      let sql = "INSERT INTO challenges SET ?";
+      let sql = "INSERT INTO Challenges SET ?";
       let query = await conn.query(sql, data, (err, results) => {
         if (err) throw err;
         res.send(results);
@@ -117,7 +117,7 @@ router.put(
     };
 
     try {
-      let sql = "UPDATE challenges set ? WHERE qid = ?";
+      let sql = "UPDATE Challenges set ? WHERE qid = ?";
       let query = await conn.query(
         sql,
         [data, req.params.qid],
@@ -139,7 +139,7 @@ router.put(
 
 router.delete("/:qid", async (req, res) => {
   conn.query(
-    "Delete FROM `challenges` WHERE QID = ?",
+    "Delete FROM `Challenges` WHERE QID = ?",
     req.params.qid,
     (err, results) => {
       res.send(results);
