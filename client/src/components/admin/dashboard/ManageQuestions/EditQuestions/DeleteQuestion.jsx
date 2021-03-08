@@ -6,7 +6,7 @@ import axios from "axios";
 
 const { confirm } = Modal;
 
-const DeleteQuestion = props => {
+const DeleteQuestion = (props) => {
   const showDeleteConfirm = () => {
     confirm({
       title: "Are you sure delete this question?",
@@ -15,16 +15,14 @@ const DeleteQuestion = props => {
       okType: "danger",
       cancelText: "No",
       onOk() {
-        axios
-          .delete("http://localhost:4000/api/questions/" + props.data.QID)
-          .then(res => {
-            message.success("Question has been deleted.");
-            props.onDeleteQuestion();
-          });
+        axios.delete("/api/questions/" + props.data.QID).then((res) => {
+          message.success("Question has been deleted.");
+          props.onDeleteQuestion();
+        });
       },
       onCancel() {
         console.log("Cancel");
-      }
+      },
     });
   };
 

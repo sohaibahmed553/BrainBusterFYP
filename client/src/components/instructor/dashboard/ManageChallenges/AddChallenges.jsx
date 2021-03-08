@@ -58,7 +58,7 @@ const AddChallenges = (props) => {
     } = values;
 
     axios
-      .post("http://localhost:4000/api/challenges", {
+      .post("/api/challenges", {
         stage,
         question,
         a,
@@ -82,12 +82,10 @@ const AddChallenges = (props) => {
   };
 
   const loadData = React.useCallback(async () => {
-    axios
-      .get("http://localhost:4000/api/courses/" + props.instructor.InstructorID)
-      .then((res) => {
-        setTotalCourses(res.data);
-        console.log(res.data);
-      });
+    axios.get("/api/courses/" + props.instructor.InstructorID).then((res) => {
+      setTotalCourses(res.data);
+      console.log(res.data);
+    });
   }, [props.instructor]);
 
   React.useEffect(() => {
@@ -97,7 +95,7 @@ const AddChallenges = (props) => {
   //-----------when any course is selected stages will be selected accordingly----------------
 
   const onCourseChange = (value) => {
-    axios.get("http://localhost:4000/api/stages/" + value).then((res) => {
+    axios.get("/api/stages/" + value).then((res) => {
       setTotalStages(res.data);
     });
   };

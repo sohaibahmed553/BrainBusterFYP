@@ -21,7 +21,7 @@ const EditChallenges = (props) => {
   const [postsPerPage] = useState(5);
 
   const loadCourses = () => {
-    axios.get("http://localhost:4000/api/courses/").then((res) => {
+    axios.get("/api/courses/").then((res) => {
       setTotalCourses(res.data);
       setLoading(false);
     });
@@ -33,7 +33,7 @@ const EditChallenges = (props) => {
   }, []);
 
   const onCourseChange = (value) => {
-    axios.get("http://localhost:4000/api/stages/" + value).then((res) => {
+    axios.get("/api/stages/" + value).then((res) => {
       setTotalStages(res.data);
     });
   };
@@ -45,21 +45,17 @@ const EditChallenges = (props) => {
   const onFinish = async (values) => {
     const { stage } = values;
     setStageOnEdit(stage);
-    await axios
-      .get("http://localhost:4000/api/challenges/show/" + stage)
-      .then((res) => {
-        setData(res.data);
-        setLoading(false);
-        setCurrentPage(1);
-      });
+    await axios.get("/api/challenges/show/" + stage).then((res) => {
+      setData(res.data);
+      setLoading(false);
+      setCurrentPage(1);
+    });
   };
 
   const onEditQuestions = () => {
-    axios
-      .get("http://localhost:4000/api/challenges/show/" + stageOnEdit)
-      .then((res) => {
-        setData(res.data);
-      });
+    axios.get("/api/challenges/show/" + stageOnEdit).then((res) => {
+      setData(res.data);
+    });
   };
 
   //get current data/posts

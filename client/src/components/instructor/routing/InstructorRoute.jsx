@@ -13,7 +13,7 @@ const InstructorRoute = ({ component: Component, render, ...rest }) => {
     );
 
     axios
-      .get("http://localhost:4000/api/instructorauth")
+      .get("/api/instructorauth")
       .then((res) => {
         setInstructor(res.data[0]);
         setIsInstructor(true);

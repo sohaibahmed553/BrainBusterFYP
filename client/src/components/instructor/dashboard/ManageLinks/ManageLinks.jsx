@@ -19,7 +19,7 @@ const ManageLinks = (props) => {
   const loadCourses = React.useCallback(async () => {
     setLoading(true);
     await axios
-      .get("http://localhost:4000/api/courses/" + props.instructor.InstructorID)
+      .get("/api/courses/" + props.instructor.InstructorID)
       .then((res) => {
         setTotalCourses(res.data);
         setLoading(false);
@@ -33,7 +33,7 @@ const ManageLinks = (props) => {
 
   const onCourseChange = (value) => {
     setLoading(true);
-    axios.get("http://localhost:4000/api/stages/" + value).then((res) => {
+    axios.get("/api/stages/" + value).then((res) => {
       setTotalStages(res.data);
       setLoading(false);
     });
@@ -42,14 +42,14 @@ const ManageLinks = (props) => {
   const onFinish = async (values) => {
     const { stage } = values;
     setStageOnEdit(stage);
-    await axios.get("http://localhost:4000/api/links/" + stage).then((res) => {
+    await axios.get("/api/links/" + stage).then((res) => {
       setData(res.data);
       setLoading(false);
     });
   };
 
   const loadData = () => {
-    axios.get("http://localhost:4000/api/links/" + stageOnEdit).then((res) => {
+    axios.get("/api/links/" + stageOnEdit).then((res) => {
       setData(res.data);
     });
   };

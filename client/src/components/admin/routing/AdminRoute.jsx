@@ -12,13 +12,13 @@ const AdminRoute = ({ component: Component, render, ...rest }) => {
       "admintoken"
     );
     axios
-      .get("http://localhost:4000/api/adminauth")
-      .then(res => {
+      .get("/api/adminauth")
+      .then((res) => {
         setAdmin(res.data[0]);
         setIsAdmin(true);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         setIsAdmin(false);
         setLoading(false);
@@ -28,7 +28,7 @@ const AdminRoute = ({ component: Component, render, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props => {
+      render={(props) => {
         if (isAdmin === false && loading === false) return <Redirect to="/" />;
         if (isAdmin === true && loading === false)
           return Component ? (

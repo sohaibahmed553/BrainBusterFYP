@@ -5,7 +5,7 @@ import axios from "axios";
 
 const { confirm } = Modal;
 
-const DeleteLink = props => {
+const DeleteLink = (props) => {
   const showDeleteConfirm = () => {
     confirm({
       title: "Are you sure delete this link?",
@@ -14,16 +14,14 @@ const DeleteLink = props => {
       okType: "danger",
       cancelText: "No",
       onOk() {
-        axios
-          .delete("http://localhost:4000/api/links/" + props.data.LinkID)
-          .then(res => {
-            message.success("Link has been deleted.");
-            props.loadData();
-          });
+        axios.delete("/api/links/" + props.data.LinkID).then((res) => {
+          message.success("Link has been deleted.");
+          props.loadData();
+        });
       },
       onCancel() {
         console.log("Cancel");
-      }
+      },
     });
   };
 

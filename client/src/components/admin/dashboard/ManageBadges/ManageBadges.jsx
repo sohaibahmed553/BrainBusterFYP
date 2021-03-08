@@ -5,7 +5,7 @@ import axios from "axios";
 import SingleBadge from "./SingleBadge";
 import AddBadge from "./AddBadge";
 
-const ManageBadges = props => {
+const ManageBadges = (props) => {
   const [data, setData] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
@@ -15,7 +15,7 @@ const ManageBadges = props => {
 
   const loadData = async () => {
     setLoading(true);
-    await axios.get("http://localhost:4000/api/badges").then(res => {
+    await axios.get("/api/badges").then((res) => {
       setData(res.data);
       setLoading(false);
     });

@@ -26,7 +26,7 @@ const Login = (props) => {
 		//if person is a student i-e- student radio is selected
 		if (person === "0") {
 			axios
-				.post("http://localhost:4000/api/auth", {
+				.post("/api/auth", {
 					UserName,
 					Pass,
 				})
@@ -45,7 +45,7 @@ const Login = (props) => {
 			if (person === "1") {
 				//when admin is logged in
 				axios
-					.post("http://localhost:4000/api/adminauth", {
+					.post("/api/adminauth", {
 						UserName,
 						Pass,
 					})
@@ -61,7 +61,7 @@ const Login = (props) => {
 			} else {
 				//when instructor is logged in
 				axios
-					.post("http://localhost:4000/api/instructorauth", {
+					.post("/api/instructorauth", {
 						UserName,
 						Pass,
 					})

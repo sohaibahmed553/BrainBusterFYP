@@ -8,39 +8,39 @@ const { Option } = Select;
 //layouts for form
 const layout = {
   labelCol: {
-    span: 4
+    span: 4,
   },
   wrapperCol: {
-    span: 18
-  }
+    span: 18,
+  },
 };
 
 const leftOptionsLayout = {
   labelCol: {
-    span: 8
+    span: 8,
   },
   wrapperCol: {
-    span: 14
-  }
+    span: 14,
+  },
 };
 
 const rightOptionsLayout = {
   labelCol: {
-    span: 6
+    span: 6,
   },
   wrapperCol: {
-    span: 14
-  }
+    span: 14,
+  },
 };
 
 const tailLayout = {
   wrapperCol: {
     offset: 18,
-    span: 4
-  }
+    span: 4,
+  },
 };
 
-const EditModal = props => {
+const EditModal = (props) => {
   const [form] = Form.useForm();
 
   const [totalCourses, setTotalCourses] = React.useState([]);
@@ -53,15 +53,15 @@ const EditModal = props => {
   }, []);
   //load all courses
   const loadData = () => {
-    axios.get("http://localhost:4000/api/courses").then(res => {
+    axios.get("/api/courses").then((res) => {
       setTotalCourses(res.data);
       //console.log(res.data);
     });
   };
   //-----------when any course is selected stages will be selected accordingly----------------
 
-  const onCourseChange = value => {
-    axios.get("http://localhost:4000/api/stages/" + value).then(res => {
+  const onCourseChange = (value) => {
+    axios.get("/api/stages/" + value).then((res) => {
       setTotalStages(res.data);
     });
   };
@@ -70,11 +70,11 @@ const EditModal = props => {
     setVisible(true);
   };
 
-  const handleCancel = e => {
+  const handleCancel = (e) => {
     setVisible(false);
   };
 
-  const onFinish = values => {
+  const onFinish = (values) => {
     const {
       stage,
       question,
@@ -84,11 +84,11 @@ const EditModal = props => {
       d,
       answer,
       difficulty,
-      explanation
+      explanation,
     } = values;
 
     axios
-      .put("http://localhost:4000/api/questions/" + props.data.QID, {
+      .put("/api/questions/" + props.data.QID, {
         stage,
         question,
         a,
@@ -97,13 +97,13 @@ const EditModal = props => {
         d,
         answer,
         difficulty,
-        explanation
+        explanation,
       })
-      .then(res => {
+      .then((res) => {
         //console.log(res);
         props.onEditQuestions();
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.response.data.error[0]);
       });
 
@@ -139,7 +139,7 @@ const EditModal = props => {
             d: props.data.D,
             answer: props.data.Answer,
             explanation: props.data.Explanation,
-            difficulty: props.data.Difficulty
+            difficulty: props.data.Difficulty,
           }}
         >
           <h5 className="d-flex justify-content-center">Edit Question</h5>
@@ -157,9 +157,9 @@ const EditModal = props => {
 
                 <Select
                   placeholder="Select Course"
-                  onChange={option => onCourseChange(option)}
+                  onChange={(option) => onCourseChange(option)}
                 >
-                  {totalCourses.map(totalCourses => (
+                  {totalCourses.map((totalCourses) => (
                     <Option
                       key={totalCourses.CourseID}
                       value={totalCourses.CourseID}
@@ -178,7 +178,7 @@ const EditModal = props => {
                 rules={[{ required: true, message: "Please select Stage!" }]}
               >
                 <Select placeholder="Select Stage">
-                  {totalStages.map(totalStages => (
+                  {totalStages.map((totalStages) => (
                     <Option key={totalStages.StID} value={totalStages.StID}>
                       {totalStages.StTitle}
                     </Option>
@@ -194,8 +194,8 @@ const EditModal = props => {
             rules={[
               {
                 required: true,
-                message: "Please input question!"
-              }
+                message: "Please input question!",
+              },
             ]}
           >
             <Input />
@@ -212,8 +212,8 @@ const EditModal = props => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input first option!"
-                  }
+                    message: "Please input first option!",
+                  },
                 ]}
               >
                 <Input />
@@ -227,8 +227,8 @@ const EditModal = props => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input second option!"
-                  }
+                    message: "Please input second option!",
+                  },
                 ]}
               >
                 <Input />
@@ -247,8 +247,8 @@ const EditModal = props => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input third option!"
-                  }
+                    message: "Please input third option!",
+                  },
                 ]}
               >
                 <Input />
@@ -262,8 +262,8 @@ const EditModal = props => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input fourth option!"
-                  }
+                    message: "Please input fourth option!",
+                  },
                 ]}
               >
                 <Input />
@@ -282,8 +282,8 @@ const EditModal = props => {
                 rules={[
                   {
                     required: true,
-                    message: "Please select answer!"
-                  }
+                    message: "Please select answer!",
+                  },
                 ]}
               >
                 <Select placeholder="Answer">
@@ -302,8 +302,8 @@ const EditModal = props => {
                 rules={[
                   {
                     required: true,
-                    message: "Please select difficulty!"
-                  }
+                    message: "Please select difficulty!",
+                  },
                 ]}
               >
                 <Select placeholder="Select difficulty">
@@ -322,8 +322,8 @@ const EditModal = props => {
             rules={[
               {
                 required: true,
-                message: "Please input explanation of the question!"
-              }
+                message: "Please input explanation of the question!",
+              },
             ]}
           >
             <Input />

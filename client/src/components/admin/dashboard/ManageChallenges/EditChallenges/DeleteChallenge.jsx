@@ -15,12 +15,10 @@ const DeleteChallenge = (props) => {
       okType: "danger",
       cancelText: "No",
       onOk() {
-        axios
-          .delete("http://localhost:4000/api/challenges/" + props.data.QID)
-          .then((res) => {
-            message.success("Question has been deleted.");
-            props.onDeleteQuestion();
-          });
+        axios.delete("/api/challenges/" + props.data.QID).then((res) => {
+          message.success("Question has been deleted.");
+          props.onDeleteQuestion();
+        });
       },
       onCancel() {
         console.log("Cancel");

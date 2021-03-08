@@ -2,12 +2,12 @@ import React from "react";
 import { Badge } from "antd";
 
 const SingleCourse = (props) => {
-    /*
+  /*
     const checkAllowed = async () => {
         let allow;
         await axios
             .get(
-                "http://localhost:4000/api/courses/allow/" + props.data.CourseID
+                "/api/courses/allow/" + props.data.CourseID
             )
             .then((res) => {
                 allow = res.data.allow;
@@ -20,7 +20,7 @@ const SingleCourse = (props) => {
         if (await checkAllowed()) {
             await axios
                 .put(
-                    "http://localhost:4000/api/courses/status/" +
+                    "/api/courses/status/" +
                         props.data.CourseID
                 )
                 .then((res) => {
@@ -46,7 +46,7 @@ const SingleCourse = (props) => {
             onOk() {
                 axios
                     .get(
-                        "http://localhost:4000/api/courses/countstages/" +
+                        "/api/courses/countstages/" +
                             props.data.CourseID
                     )
                     .then((res) => {
@@ -69,18 +69,18 @@ const SingleCourse = (props) => {
         message.warning("You can't change the online course.");
     };
 */
-    const statusBadge = (status) => {
-        if (status) return <Badge status="success" text="Online" />;
-        else return <Badge status="error" text="Offline" />;
-    };
+  const statusBadge = (status) => {
+    if (status) return <Badge status="success" text="Online" />;
+    else return <Badge status="error" text="Offline" />;
+  };
 
-    return (
-        <tr>
-            <td className="text-center">{props.data.CourseName}</td>
-            <td className="text-center ">{props.data.Code}</td>
-            <td className="text-center ">{statusBadge(props.data.Status)}</td>
-        </tr>
-    );
+  return (
+    <tr>
+      <td className="text-center">{props.data.CourseName}</td>
+      <td className="text-center ">{props.data.Code}</td>
+      <td className="text-center ">{statusBadge(props.data.Status)}</td>
+    </tr>
+  );
 };
 
 export default SingleCourse;

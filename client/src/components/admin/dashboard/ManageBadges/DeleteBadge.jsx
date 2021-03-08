@@ -5,7 +5,7 @@ import axios from "axios";
 
 const { confirm } = Modal;
 
-const DeleteBadge = props => {
+const DeleteBadge = (props) => {
   const showDeleteConfirm = () => {
     confirm({
       title: "Are you sure delete this badge?",
@@ -14,16 +14,14 @@ const DeleteBadge = props => {
       okType: "danger",
       cancelText: "No",
       onOk() {
-        axios
-          .delete("http://localhost:4000/api/badges/" + props.data.BID)
-          .then(res => {
-            message.success("Badge has been deleted.");
-            props.loadData();
-          });
+        axios.delete("/api/badges/" + props.data.BID).then((res) => {
+          message.success("Badge has been deleted.");
+          props.loadData();
+        });
       },
       onCancel() {
         console.log("Cancel");
-      }
+      },
     });
   };
 

@@ -5,20 +5,20 @@ import axios from "axios";
 //layouts for form
 const layout = {
   labelCol: {
-    span: 4
+    span: 4,
   },
   wrapperCol: {
-    span: 18
-  }
+    span: 18,
+  },
 };
 const tailLayout = {
   wrapperCol: {
     offset: 18,
-    span: 4
-  }
+    span: 4,
+  },
 };
 
-const AddBadge = props => {
+const AddBadge = (props) => {
   const [form] = Form.useForm();
 
   const [visible, setVisible] = React.useState(false);
@@ -27,28 +27,28 @@ const AddBadge = props => {
     setVisible(true);
   };
 
-  const handleCancel = e => {
+  const handleCancel = (e) => {
     setVisible(false);
   };
 
-  const onFinish = values => {
+  const onFinish = (values) => {
     setVisible(false);
     onAdd(values);
   };
 
-  const onAdd = values => {
+  const onAdd = (values) => {
     const { BName, BDetail } = values;
     axios
-      .post("http://localhost:4000/api/badges/", {
+      .post("/api/badges/", {
         BName,
-        BDetail
+        BDetail,
       })
-      .then(res => {
+      .then((res) => {
         message.success("Badge has been added.");
         props.loadData();
         form.resetFields();
       })
-      .catch(err => {});
+      .catch((err) => {});
   };
 
   return (
@@ -85,8 +85,8 @@ const AddBadge = props => {
             rules={[
               {
                 required: true,
-                message: "Please input badge name!"
-              }
+                message: "Please input badge name!",
+              },
             ]}
           >
             <Input />
@@ -98,8 +98,8 @@ const AddBadge = props => {
             rules={[
               {
                 required: true,
-                message: "Please input badge detail!"
-              }
+                message: "Please input badge detail!",
+              },
             ]}
           >
             <Input.TextArea />

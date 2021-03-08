@@ -7,7 +7,7 @@ import Pagination from "./Pagination";
 
 const { Option } = Select;
 
-const EditQuestions = props => {
+const EditQuestions = (props) => {
   const [form] = Form.useForm();
 
   const [data, setData] = React.useState([]);
@@ -27,31 +27,29 @@ const EditQuestions = props => {
   }, []);
 
   const loadCourses = async () => {
-    await axios.get("http://localhost:4000/api/courses").then(res => {
+    await axios.get("/api/courses").then((res) => {
       setTotalCourses(res.data);
       //console.log(res.data);
     });
   };
 
-  const onCourseChange = value => {
-    axios.get("http://localhost:4000/api/stages/" + value).then(res => {
+  const onCourseChange = (value) => {
+    axios.get("/api/stages/" + value).then((res) => {
       setTotalStages(res.data);
     });
   };
 
-  const onFinishFailed = errorInfo => {
+  const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
-  const onFinish = async values => {
+  const onFinish = async (values) => {
     const { stage, difficulty } = values;
     setStageOnEdit(stage);
     setDifficultyOnEdit(difficulty);
     await axios
-      .get(
-        "http://localhost:4000/api/questions/show/" + stage + "/" + difficulty
-      )
-      .then(res => {
+      .get("/api/questions/show/" + stage + "/" + difficulty)
+      .then((res) => {
         setData(res.data);
         setLoading(false);
         setCurrentPage(1);
@@ -60,13 +58,8 @@ const EditQuestions = props => {
 
   const onEditQuestions = () => {
     axios
-      .get(
-        "http://localhost:4000/api/questions/show/" +
-          stageOnEdit +
-          "/" +
-          difficultyOnEdit
-      )
-      .then(res => {
+      .get("/api/questions/show/" + stageOnEdit + "/" + difficultyOnEdit)
+      .then((res) => {
         setData(res.data);
       });
   };
@@ -77,7 +70,7 @@ const EditQuestions = props => {
   const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
 
   //change page
-  const paginate = pageNumber => {
+  const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
@@ -101,9 +94,9 @@ const EditQuestions = props => {
 
               <Select
                 placeholder="Select Course"
-                onChange={option => onCourseChange(option)}
+                onChange={(option) => onCourseChange(option)}
               >
-                {totalCourses.map(totalCourses => (
+                {totalCourses.map((totalCourses) => (
                   <Option
                     key={totalCourses.CourseID}
                     value={totalCourses.CourseID}
@@ -122,7 +115,7 @@ const EditQuestions = props => {
               rules={[{ required: true, message: "Please select Stage!" }]}
             >
               <Select placeholder="Select Stage">
-                {totalStages.map(totalStages => (
+                {totalStages.map((totalStages) => (
                   <Option key={totalStages.StID} value={totalStages.StID}>
                     {totalStages.StTitle}
                   </Option>
@@ -138,8 +131,8 @@ const EditQuestions = props => {
               rules={[
                 {
                   required: true,
-                  message: "Please select difficulty!"
-                }
+                  message: "Please select difficulty!",
+                },
               ]}
             >
               <Select placeholder="Select Difficulty">

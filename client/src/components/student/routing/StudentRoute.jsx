@@ -12,13 +12,13 @@ const StudentRoute = ({ component: Component, render, ...rest }) => {
       "token"
     );
     axios
-      .get("http://localhost:4000/api/auth")
-      .then(res => {
+      .get("/api/auth")
+      .then((res) => {
         setStudent(res.data[0]);
         setIsStudent(true);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         setIsStudent(false);
         setLoading(false);
@@ -28,7 +28,7 @@ const StudentRoute = ({ component: Component, render, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props => {
+      render={(props) => {
         if (isStudent === false && loading === false)
           return <Redirect to="/" />;
         if (isStudent === true && loading === false) {

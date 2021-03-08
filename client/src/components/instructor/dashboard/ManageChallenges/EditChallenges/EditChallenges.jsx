@@ -22,7 +22,7 @@ const EditChallenges = (props) => {
 
   const loadCourses = React.useCallback(async () => {
     await axios
-      .get("http://localhost:4000/api/courses/" + props.instructor.InstructorID)
+      .get("/api/courses/" + props.instructor.InstructorID)
       .then((res) => {
         setTotalCourses(res.data);
         setLoading(false);
@@ -35,7 +35,7 @@ const EditChallenges = (props) => {
   }, [loadCourses]);
 
   const onCourseChange = (value) => {
-    axios.get("http://localhost:4000/api/stages/" + value).then((res) => {
+    axios.get("/api/stages/" + value).then((res) => {
       setTotalStages(res.data);
     });
   };
@@ -47,21 +47,17 @@ const EditChallenges = (props) => {
   const onFinish = async (values) => {
     const { stage } = values;
     setStageOnEdit(stage);
-    await axios
-      .get("http://localhost:4000/api/challenges/show/" + stage)
-      .then((res) => {
-        setData(res.data);
-        setLoading(false);
-        setCurrentPage(1);
-      });
+    await axios.get("/api/challenges/show/" + stage).then((res) => {
+      setData(res.data);
+      setLoading(false);
+      setCurrentPage(1);
+    });
   };
 
   const onEditQuestions = () => {
-    axios
-      .get("http://localhost:4000/api/challenges/show/" + stageOnEdit)
-      .then((res) => {
-        setData(res.data);
-      });
+    axios.get("/api/challenges/show/" + stageOnEdit).then((res) => {
+      setData(res.data);
+    });
   };
 
   //get current data/posts

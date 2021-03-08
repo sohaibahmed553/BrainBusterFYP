@@ -5,20 +5,20 @@ import axios from "axios";
 //layouts for form
 const layout = {
   labelCol: {
-    span: 4
+    span: 4,
   },
   wrapperCol: {
-    span: 18
-  }
+    span: 18,
+  },
 };
 const tailLayout = {
   wrapperCol: {
     offset: 18,
-    span: 4
-  }
+    span: 4,
+  },
 };
 
-const EditBadge = props => {
+const EditBadge = (props) => {
   const [form] = Form.useForm();
 
   const [visible, setVisible] = React.useState(false);
@@ -27,27 +27,27 @@ const EditBadge = props => {
     setVisible(true);
   };
 
-  const handleCancel = e => {
+  const handleCancel = (e) => {
     setVisible(false);
   };
 
-  const onFinish = values => {
+  const onFinish = (values) => {
     message.success("Badged has been updated.");
     setVisible(false);
     onEdit(values);
   };
 
-  const onEdit = values => {
+  const onEdit = (values) => {
     const { BName, BDetail } = values;
     axios
-      .put("http://localhost:4000/api/badges/" + props.data.BID, {
+      .put("/api/badges/" + props.data.BID, {
         BName,
-        BDetail
+        BDetail,
       })
-      .then(res => {
+      .then((res) => {
         props.loadData();
       })
-      .catch(err => {});
+      .catch((err) => {});
   };
 
   return (
@@ -70,7 +70,7 @@ const EditBadge = props => {
           name="basic"
           initialValues={{
             BName: props.data.BName,
-            BDetail: props.data.BDetail
+            BDetail: props.data.BDetail,
           }}
         >
           {" "}
@@ -83,8 +83,8 @@ const EditBadge = props => {
             rules={[
               {
                 required: true,
-                message: "Please input badge name!"
-              }
+                message: "Please input badge name!",
+              },
             ]}
           >
             <Input />
@@ -96,8 +96,8 @@ const EditBadge = props => {
             rules={[
               {
                 required: true,
-                message: "Please input badge detail!"
-              }
+                message: "Please input badge detail!",
+              },
             ]}
           >
             <Input.TextArea />

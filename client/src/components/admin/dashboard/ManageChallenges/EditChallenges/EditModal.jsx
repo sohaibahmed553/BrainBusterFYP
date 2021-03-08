@@ -48,7 +48,7 @@ const EditModal = (props) => {
   const [visible, setVisible] = React.useState(false);
 
   const loadCourses = () => {
-    axios.get("http://localhost:4000/api/courses/").then((res) => {
+    axios.get("/api/courses/").then((res) => {
       setTotalCourses(res.data);
     });
   };
@@ -61,7 +61,7 @@ const EditModal = (props) => {
   //-----------when any course is selected stages will be selected accordingly----------------
 
   const onCourseChange = (value) => {
-    axios.get("http://localhost:4000/api/stages/" + value).then((res) => {
+    axios.get("/api/stages/" + value).then((res) => {
       setTotalStages(res.data);
     });
   };
@@ -78,7 +78,7 @@ const EditModal = (props) => {
     const { stage, question, a, b, c, d, answer } = values;
 
     axios
-      .put("http://localhost:4000/api/challenges/" + props.data.QID, {
+      .put("/api/challenges/" + props.data.QID, {
         stage,
         question,
         a,

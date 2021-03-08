@@ -61,7 +61,7 @@ const AddLink = (props) => {
   const onAdd = (values) => {
     const { stage, link } = values;
     axios
-      .post("http://localhost:4000/api/links/", {
+      .post("/api/links/", {
         stage,
         link,
       })
@@ -76,7 +76,7 @@ const AddLink = (props) => {
 
   const loadCourses = React.useCallback(async () => {
     await axios
-      .get("http://localhost:4000/api/courses/" + props.instructor.InstructorID)
+      .get("/api/courses/" + props.instructor.InstructorID)
       .then((res) => {
         setTotalCourses(res.data);
         //console.log(res.data);
@@ -91,7 +91,7 @@ const AddLink = (props) => {
   //-----------when any course is selected stages will be selected accordingly----------------
 
   const onCourseChange = (value) => {
-    axios.get("http://localhost:4000/api/stages/" + value).then((res) => {
+    axios.get("/api/stages/" + value).then((res) => {
       setTotalStages(res.data);
     });
   };

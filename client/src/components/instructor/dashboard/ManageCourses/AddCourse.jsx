@@ -42,7 +42,7 @@ const AddCourse = (props) => {
     const status = 0;
     const instructorid = props.instructor.InstructorID;
     axios
-      .post("http://localhost:4000/api/courses/", {
+      .post("/api/courses/", {
         coursename,
         status,
         instructorid,

@@ -6,37 +6,33 @@ import axios from "axios";
 const { confirm } = Modal;
 
 const DeleteStage = (props) => {
-    const showDeleteConfirm = () => {
-        confirm({
-            title:
-                "Are you sure delete this stage? Every question present in this stage will also be deleted.",
-            icon: <ExclamationCircleOutlined />,
-            okText: "Yes",
-            okType: "danger",
-            cancelText: "No",
-            onOk() {
-                axios
-                    .delete(
-                        "http://localhost:4000/api/stages/" + props.data.StID
-                    )
-                    .then((res) => {
-                        message.success("Stage has been deleted.");
-                        props.loadData();
-                    });
-            },
-            onCancel() {
-                console.log("Cancel");
-            },
+  const showDeleteConfirm = () => {
+    confirm({
+      title:
+        "Are you sure delete this stage? Every question present in this stage will also be deleted.",
+      icon: <ExclamationCircleOutlined />,
+      okText: "Yes",
+      okType: "danger",
+      cancelText: "No",
+      onOk() {
+        axios.delete("/api/stages/" + props.data.StID).then((res) => {
+          message.success("Stage has been deleted.");
+          props.loadData();
         });
-    };
+      },
+      onCancel() {
+        console.log("Cancel");
+      },
+    });
+  };
 
-    return (
-        <div>
-            <Button onClick={showDeleteConfirm} type="link">
-                delete
-            </Button>
-        </div>
-    );
+  return (
+    <div>
+      <Button onClick={showDeleteConfirm} type="link">
+        delete
+      </Button>
+    </div>
+  );
 };
 
 export default DeleteStage;
