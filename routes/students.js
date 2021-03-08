@@ -91,7 +91,7 @@ router.get("/students", async (req, res) => {
 //@access Public
 router.get("/dashboard/:stdid/:courseID", async (req, res) => {
   let sql1 =
-    "select badges.BID, BName, BAvatar from StudentBadges, Badges where Badges.BID = StudentBadges.BID and StdID = ? and CourseID = ?";
+    "select Badges.BID, BName, BAvatar from StudentBadges, Badges where Badges.BID = StudentBadges.BID and StdID = ? and CourseID = ?";
   let sql2 =
     "SELECT * FROM ScoresOfStudents where TotalScore > (Select TotalScore from ScoresOfStudents where StdID = ? and CourseID = ?) and CourseId = ? order by TotalScore limit 1;SELECT * FROM brainbuster.ScoresOfStudents where StdID = ? and CourseID = ?;SELECT * FROM ScoresOfStudents where TotalScore < (Select TotalScore from ScoresOfStudents where StdID = ? and CourseID = ?) and CourseId = ?  order by TotalScore desc limit 1";
   let sql3 =

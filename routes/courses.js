@@ -88,7 +88,7 @@ router.get("/data/:courseid", async (req, res) => {
 //@access Public
 router.get("/student/:stdid", async (req, res) => {
   let sql =
-    "select courses.CourseID,CourseName, CAvatar from AssignedCourses, Courses where AssignedCourses.CourseID = Courses.CourseID and StdID=?";
+    "select Courses.CourseID,CourseName, CAvatar from AssignedCourses, Courses where AssignedCourses.CourseID = Courses.CourseID and StdID=?";
   let query = conn.query(sql, [req.params.stdid], (err, results) => {
     res.send(results);
   });
